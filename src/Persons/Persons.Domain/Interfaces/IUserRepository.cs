@@ -1,4 +1,5 @@
 ﻿using Persons.Domain.Entities;
+using Persons.Domain.Interfaces;
 
 namespace Persons.Domain.Interfaces
 {

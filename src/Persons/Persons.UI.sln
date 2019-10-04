@@ -15,9 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Infra", "3-Infra", "{A869
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1-Persons.Infra.Data", "3.1-Persons.Infra.Data", "{B10D253E-853C-41D2-B7E0-DC5A6A2252E7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-CrossCutting", "4-CrossCutting", "{9AF8683A-B180-4005-86D4-06DC971AC457}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persons.Infra.Data", "Persons.Infra.Data\Persons.Infra.Data.csproj", "{3F47DAC4-6545-45B6-BC06-B86A34533018}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2-Persons.Infra.CrossCutting", "3.2-Persons.Infra.CrossCutting", "{AAE505D9-F343-4242-BDC6-0614D2C6A88F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persons.CrossCutting.IoC", "Persons.Infra.CrossCutting\Persons.CrossCutting.IoC\Persons.CrossCutting.IoC.csproj", "{40EA613B-1431-4A50-9C94-32763BE32F41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{3F47DAC4-6545-45B6-BC06-B86A34533018}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F47DAC4-6545-45B6-BC06-B86A34533018}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F47DAC4-6545-45B6-BC06-B86A34533018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40EA613B-1431-4A50-9C94-32763BE32F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40EA613B-1431-4A50-9C94-32763BE32F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40EA613B-1431-4A50-9C94-32763BE32F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40EA613B-1431-4A50-9C94-32763BE32F41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,8 @@ Global
 		{51E23C60-6F11-4927-882D-CAD7C7625572} = {A7ED21A4-DF86-4E90-B219-05D11CDC1B17}
 		{B10D253E-853C-41D2-B7E0-DC5A6A2252E7} = {A869570A-C5A1-4A68-B03A-C7F7B34EFC25}
 		{3F47DAC4-6545-45B6-BC06-B86A34533018} = {B10D253E-853C-41D2-B7E0-DC5A6A2252E7}
+		{AAE505D9-F343-4242-BDC6-0614D2C6A88F} = {A869570A-C5A1-4A68-B03A-C7F7B34EFC25}
+		{40EA613B-1431-4A50-9C94-32763BE32F41} = {AAE505D9-F343-4242-BDC6-0614D2C6A88F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99D34E86-E779-47F1-A3E6-C855C81AE740}
