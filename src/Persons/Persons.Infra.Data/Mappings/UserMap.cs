@@ -26,7 +26,7 @@ namespace Persons.Infra.Data.Mappings
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(c => c.Senha)
+            builder.Property(c => c.Password)
                 .HasColumnType("varchar(200)")
                 .HasMaxLength(200)
                 .IsRequired();

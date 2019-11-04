@@ -5,19 +5,19 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="4.0.1" />
   </ItemGroup>
-
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\EFinancialPurchase.AspNet.Common\EFinancialPurchase.AspNet.Common.csproj" />
     <ProjectReference Include="..\Persons.Application\Persons.Application.csproj" />
-    <ProjectReference Include="..\Persons.Infra.CrossCutting\Persons.CrossCutting.WebApiServices\Persons.CrossCutting.WebApiServices.csproj" />
-    <ProjectReference Include="..\Persons.Infra.Data\Persons.Infra.Data.csproj" />
+    <ProjectReference Include="..\Persons.Infra.CrossCutting\Persons.CrossCutting.IoC\Persons.CrossCutting.IoC.csproj" />
   </ItemGroup>
 
 </Project>

@@ -18,7 +18,8 @@ namespace Persons.Infra.Data.UoW
         {
             get
             {
-                return _userRepository = _userRepository ?? new UserRepository(_context);
+                _userRepository = _userRepository ?? new UserRepository(_context);
+                return _userRepository;
             }
         }
 
