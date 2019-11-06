@@ -23,8 +23,8 @@ namespace Persons.Application.Application
                 Login = login.Username,
                 Password = login.Password
             };
-            //string token = await _accountService.Authenticate(user);
-            string token = "chave";
+            string token = await _accountService.Authenticate(user);
+            //string token = "chave";
             return token;
         }
     }

@@ -16,10 +16,10 @@ namespace Persons.Domain.Services
 
         public async Task<string> Authenticate(User user)
         {
-            User userLogged = await  _unitOfWork.userRepository.SearchUserAsync(user);
+             bool userLogged = await _unitOfWork.userRepository.SearchUserAsync(user);
 
             //lembrar de estudar fluentValidation nativo do asp.net core
-            if (userLogged == null)
+            if (!userLogged)
             {
                 throw new Exception("Usuario não encontrado");
             }

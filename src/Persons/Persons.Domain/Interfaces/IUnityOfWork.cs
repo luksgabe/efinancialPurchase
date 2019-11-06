@@ -2,10 +2,9 @@
 
 namespace Persons.Domain.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork 
     {
         IUserRepository userRepository { get; }
-
         bool Commit();
     }
 }

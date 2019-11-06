@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Persons.Domain.Entities;
+using Persons.Domain.Interfaces;
 
 namespace Persons.Infra.Data.Mappings
 {
-    public class UserMap : IEntityTypeConfiguration<User>
+    public class UserMap : IEntityTypeConfiguration<User>, IMapping
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
