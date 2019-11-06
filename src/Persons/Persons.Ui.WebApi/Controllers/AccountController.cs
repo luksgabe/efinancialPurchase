@@ -13,11 +13,11 @@ namespace Persons.Ui.WebApi.Controllers
     [ApiController]
     public class AccountController : BaseController
     {
-        //private readonly IAccountApplication _accountApp;
+        private readonly IAccountApplication _accountApp;
 
-        public AccountController()
+        public AccountController(IAccountApplication accountApp)
         {
-            //_accountApp = accountApp;
+            _accountApp = accountApp;
         }
 
         [HttpPost("[action]")]
@@ -25,8 +25,7 @@ namespace Persons.Ui.WebApi.Controllers
         {
             try
             {
-                //string token = await _accountApp.Login(login);
-                string token = "fjasnfasndasdsadd";
+                string token = await _accountApp.Login(login);
                 var account = new AccountDTO { Login = login.Username, Password = login.Password, Token = token };
                 return Ok(account);
             }

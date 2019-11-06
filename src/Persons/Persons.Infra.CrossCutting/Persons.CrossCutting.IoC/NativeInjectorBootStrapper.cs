@@ -15,12 +15,11 @@ namespace Persons.CrossCutting.IoC
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            services.AddScoped<ApplicationDbContext>();
             services.AddSingleton<IWebApiService, WebApiService>();
 
-            //services.AddScoped<IAccountApplication, AccountApplication>();
+            services.AddScoped<IAccountApplication, AccountApplication>();
 
-            //services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IAccountService, AccountService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
