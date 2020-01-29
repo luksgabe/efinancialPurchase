@@ -1,30 +1,30 @@
 ﻿using Persons.Domain.Entities;
 using Persons.Domain.Interfaces;
-using System;
 using System.Threading.Tasks;
+using EFinancialPurchase.AspNet.Common.Interfaces;
+using EFinancialPurchase.AspNet.Common.CommandResult;
 
 namespace Persons.Domain.Services
 {
     public class AccountService : IAccountService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IValidatorApp<User> _validator;
 
         public AccountService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+            _validator = _unitOfWork.userLoginValidate;
         }
 
-        public async Task<string> Authenticate(User user)
+        public async Task<AppResult<User>> Authenticate(User user)
         {
-             bool userLogged = await _unitOfWork.userRepository.SearchUserAsync(user);
+            var result = await Task.Run(() => _validator.ValidateObject(user));
 
-            //lembrar de estudar fluentValidation nativo do asp.net core
-            if (!userLogged)
-            {
-                throw new Exception("Usuario não encontrado");
-            }
+            if (!result.IsValid)
+                return AppResult<User>.Error(result);
 
-            return "gera nova chave aqui";
+            return AppResult<User>.Succeed(user);
         }
     }
 }

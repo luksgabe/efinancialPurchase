@@ -1,11 +1,21 @@
-using System;
+using DotNetCore.Objects;
+using EFinancialPurchase.AspNet.Common.Utils;
+using Newtonsoft.Json;
 
-namespace Persons.UI.Models
+namespace Persons.Ui.Models
 {
     public class ErrorViewModel
     {
         public string RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+
+
+        public static void ModelStateExtention(string errorSerialized)
+        {
+            errorSerialized = errorSerialized.SpliteHttpCode();
+            var result = JsonConvert.DeserializeObject<DataResult<string>>(errorSerialized);
+
+        }
     }
 }

@@ -1,12 +1,13 @@
-﻿using EFinancialPurchase.AspNet.Common.DTOs;
+﻿using EFinancialPurchase.AspNet.Common.CommandResult;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Persons.Application.ViewModels;
 using Persons.CrossCutting.WebApiServices;
 using System;
 using System.Threading.Tasks;
+using EFinancialPurchase.AspNet.Common.Utils;
 
-namespace Persons.UI.Controllers
+namespace Persons.Ui.Controllers
 {
     public class AccountController : BaseController
     {
@@ -30,8 +31,9 @@ namespace Persons.UI.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
+            //await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
             return View();
         }
 
@@ -44,15 +46,12 @@ namespace Persons.UI.Controllers
                     return View(login);
 
                 _urlRedirect = "api/Account/Login";
-                var result = await _webApi.PostAsync<AccountDTO>(_urlRedirect, login);
-
-                if (!string.IsNullOrEmpty(result.Token))
-                    return RedirectToAction("Index", "Home");
-                else
-                    return View(login);
+                var command = await _webApi.PostAsync<AppResult<LoginViewModel>>(_urlRedirect, login);
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
-            {                     
+            {
+                ModelState.AddModelError("", ex.Message.SpliteHttpCode().Trim());
                 return View(login);
             }
         }

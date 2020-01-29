@@ -1,4 +1,6 @@
 ﻿using Persons.Domain.Interfaces;
+using Persons.Domain.Validations;
+using Persons.Domain.Validations.Rules;
 using Persons.Infra.Data.Context;
 using Persons.Infra.Data.Repositories;
 
@@ -8,6 +10,7 @@ namespace Persons.Infra.Data.UoW
     {
         private readonly ApplicationDbContext _context;
         private IUserRepository _userRepository;
+        private IUserLoginValidation _userLoginValidate;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -32,5 +35,19 @@ namespace Persons.Infra.Data.UoW
         {
             _context.Dispose();
         }
+
+        #region  Implementations Validation
+
+        public IUserLoginValidation userLoginValidate
+        {
+            get
+            {
+                 _userLoginValidate = _userLoginValidate ?? new UserLoginValidation(new UserRule(userRepository));
+                return _userLoginValidate;
+            }
+        }
+
+        #endregion
+
     }
 }

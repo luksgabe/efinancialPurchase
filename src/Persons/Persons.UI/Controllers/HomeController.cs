@@ -5,16 +5,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Persons.CrossCutting.WebApiServices;
-using Persons.UI.Models;
+using Persons.Ui.Models;
 
-namespace Persons.UI.Controllers
+namespace Persons.Ui.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(IWebApiService webApiService, IConfiguration configuration) : base(webApiService, configuration)
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(IWebApiService webApi, IConfiguration configuration, ILogger<HomeController> logger) 
+            : base (webApi, configuration)
         {
-            _configuration = configuration;
+            _logger = logger;
         }
 
         public IActionResult Index()
