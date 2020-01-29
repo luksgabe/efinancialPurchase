@@ -6,5 +6,7 @@ namespace Persons.Domain.Interfaces
     {
         IUserRepository userRepository { get; }
         bool Commit();
+
+        IUserLoginValidation userLoginValidate { get; }
     }
 }

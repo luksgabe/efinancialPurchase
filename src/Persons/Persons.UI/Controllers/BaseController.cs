@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Persons.CrossCutting.WebApiServices;
-using System;
 
-namespace Persons.UI.Controllers
+namespace Persons.Ui.Controllers
 {
     public class BaseController : Controller
     {

@@ -1,4 +1,6 @@
-﻿using Persons.Application.Interface;
+﻿using DotNetCore.Objects;
+using EFinancialPurchase.AspNet.Common.CommandResult;
+using Persons.Application.Interface;
 using Persons.Application.ViewModels;
 using Persons.Domain.Entities;
 using Persons.Domain.Interfaces;
@@ -15,17 +17,24 @@ namespace Persons.Application.Application
         {
             _accountService = accountService;
         }
-        public async Task<string> Login(LoginViewModel login)
+        public async Task<AppResult<LoginViewModel>> Login(LoginViewModel login)
         {
+            AppResult<LoginViewModel> result;
+
             //lembrar de adicionar o mapper aqui
             var user = new User
             {
                 Login = login.Username,
                 Password = login.Password
             };
-            string token = await _accountService.Authenticate(user);
-            //string token = "chave";
-            return token;
+
+            var retorno = await _accountService.Authenticate(user);
+            if (!retorno.ValidationResult.IsValid)
+                result = AppResult<LoginViewModel>.Error(retorno.ValidationResult);
+            else
+                result = AppResult<LoginViewModel>.Succeed(login);
+
+            return result;
         }
     }
 }

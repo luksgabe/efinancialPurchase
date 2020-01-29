@@ -19,6 +19,7 @@
             <span asp-validation-for="Username" class="text-danger"></span>
             <input asp-for="Password" id="password" type="password" class="fadeIn third" placeholder="Password">
             <span asp-validation-for="Password" class="text-danger"></span>
+            <div asp-validation-summary="All" class="text-danger"></div>
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
 

@@ -1,10 +1,13 @@
-﻿using EFinancialPurchase.AspNet.Common.DTOs;
+﻿using DotNetCore.Objects;
+using EFinancialPurchase.AspNet.Common.CommandResult;
+using EFinancialPurchase.AspNet.Common.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persons.Application.Application;
 using Persons.Application.Interface;
 using Persons.Application.ViewModels;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Persons.Ui.WebApi.Controllers
@@ -25,9 +28,11 @@ namespace Persons.Ui.WebApi.Controllers
         {
             try
             {
-                string token = await _accountApp.Login(login);
-                var account = new AccountDTO { Login = login.Username, Password = login.Password, Token = token };
-                return Ok(account);
+                AppResult<LoginViewModel> result = await _accountApp.Login(login);
+                if (result.ValidationResult.IsValid)
+                    return Ok(result);
+                else
+                    return Unauthorized(result.ValidationResult.Errors.FirstOrDefault().ErrorMessage);
             }
             catch (Exception ex)
             {
