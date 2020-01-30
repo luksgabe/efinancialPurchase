@@ -1,9 +1,5 @@
-﻿using DotNetCore.Objects;
-using EFinancialPurchase.AspNet.Common.CommandResult;
-using EFinancialPurchase.AspNet.Common.DTOs;
-using Microsoft.AspNetCore.Authorization;
+﻿using EFinancialPurchase.AspNet.Common.CommandResult;
 using Microsoft.AspNetCore.Mvc;
-using Persons.Application.Application;
 using Persons.Application.Interface;
 using Persons.Application.ViewModels;
 using System;
