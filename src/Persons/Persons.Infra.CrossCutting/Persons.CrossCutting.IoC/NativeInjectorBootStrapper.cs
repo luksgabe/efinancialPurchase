@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Persons.Application.Application;
+using Persons.Application.AutoMapper;
 using Persons.Application.Interface;
 using Persons.CrossCutting.WebApiServices;
 using Persons.Domain.Interfaces;
 using Persons.Domain.Services;
-using Persons.Infra.Data.Context;
-using Persons.Infra.Data.Repositories;
 using Persons.Infra.Data.UoW;
+using System;
 
 namespace Persons.CrossCutting.IoC
 {
@@ -15,6 +16,8 @@ namespace Persons.CrossCutting.IoC
     {
         public static void RegisterServices(IServiceCollection services)
         {
+            AddAutoMapperSetup(services);
+
             services.AddSingleton<IWebApiService, WebApiService>();
 
             services.AddScoped<IAccountApplication, AccountApplication>();
@@ -28,6 +31,15 @@ namespace Persons.CrossCutting.IoC
         {
             application.UseSwagger();
             application.UseSwaggerUI(cfg => cfg.SwaggerEndpoint("/swagger/api/swagger.json", "API"));
+        }
+
+        public static void AddAutoMapperSetup(this IServiceCollection services)
+        {
+            if (services == null) throw new ArgumentNullException(nameof(services));
+
+            var mappingConfig = AutoMapperConfig.RegisterMappings();
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
     }
 }
