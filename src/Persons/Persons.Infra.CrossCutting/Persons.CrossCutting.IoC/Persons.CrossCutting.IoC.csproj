@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Persons.Application\Persons.Application.csproj" />
+    <ProjectReference Include="..\..\Persons.CrossCutting.Security\Persons.CrossCutting.Security.csproj" />
     <ProjectReference Include="..\..\Persons.Domain\Persons.Domain.csproj" />
     <ProjectReference Include="..\..\Persons.Infra.Data\Persons.Infra.Data.csproj" />
     <ProjectReference Include="..\Persons.CrossCutting.WebApiServices\Persons.CrossCutting.WebApiServices.csproj" />
