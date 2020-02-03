@@ -1,5 +1,4 @@
-﻿using DotNetCore.Objects;
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Results;
 
 namespace EFinancialPurchase.AspNet.Common.Interfaces

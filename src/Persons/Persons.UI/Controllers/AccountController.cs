@@ -55,5 +55,10 @@ namespace Persons.Ui.Controllers
                 return View(login);
             }
         }
+
+        public async Task<IActionResult> SignOut()
+        {
+            return RedirectToAction("Login");
+        }
     }
 }
