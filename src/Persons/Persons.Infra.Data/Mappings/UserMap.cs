@@ -17,6 +17,15 @@ namespace Persons.Infra.Data.Mappings
                 .HasMaxLength(100)
                 .IsRequired();
 
+            builder.Property(u => u.LastName)
+                .HasColumnType("varchar(100)")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder.Property(u => u.Cpf)
+                .HasColumnType("varchar(20)")
+                .HasMaxLength(100);
+
             builder.Property(c => c.Email)
                 .HasColumnType("varchar(100)")
                 .HasMaxLength(100)

@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Persons.Application.Application;
 using Persons.Application.AutoMapper;
 using Persons.Application.Interface;
+using Persons.CrossCutting.Security.Hash;
 using Persons.CrossCutting.WebApiServices;
 using Persons.Domain.Interfaces;
 using Persons.Domain.Services;
@@ -17,6 +18,8 @@ namespace Persons.CrossCutting.IoC
         public static void RegisterServices(IServiceCollection services)
         {
             AddAutoMapperSetup(services);
+
+            services.AddSingleton<IHash, Hash>();
 
             services.AddSingleton<IWebApiService, WebApiService>();
 

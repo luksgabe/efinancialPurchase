@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Persons.CrossCutting.Security\Persons.CrossCutting.Security.csproj" />
     <ProjectReference Include="..\Persons.Domain\Persons.Domain.csproj" />
   </ItemGroup>
 
