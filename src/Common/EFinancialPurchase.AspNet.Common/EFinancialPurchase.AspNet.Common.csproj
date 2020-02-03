@@ -9,10 +9,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="DotNetCore.Objects">
-      <HintPath>bin\Debug\netstandard2.0\DotNetCore.Objects.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

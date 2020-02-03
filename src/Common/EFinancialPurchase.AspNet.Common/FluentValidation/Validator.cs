@@ -1,5 +1,4 @@
-﻿using DotNetCore.Objects;
-using EFinancialPurchase.AspNet.Common.Interfaces;
+﻿using EFinancialPurchase.AspNet.Common.Interfaces;
 using FluentValidation;
 using FluentValidation.Results;
 
