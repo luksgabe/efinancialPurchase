@@ -12,10 +12,10 @@ namespace Persons.Infra.Data.Repositories
         {
         }
 
-        public async Task<bool> SearchUserAsync(User user)
-        {
-            IQueryable<User> listUser = await GetAllAsync();
-            return await Task.Run(() => listUser.Any(p => p.Login == user.Login && p.Password == user.Password));
-        }
+        //public async Task<bool> SearchUserAsync(User user)
+        //{
+        //    IQueryable<User> listUser = await GetAllAsync();
+        //    return await Task.Run(() => listUser.Any(p => p.Login == user.Login && p.Password == user.Password));
+        //}
     }
 }

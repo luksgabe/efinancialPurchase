@@ -3,7 +3,7 @@ using Persons.Domain.Entities;
 
 namespace Persons.Domain.Interfaces
 {
-    public interface IUserLoginValidation : IValidatorApp<User>
+    public interface IUserLoginValidation : IValidatorApp<Account>
     {
     }
 }

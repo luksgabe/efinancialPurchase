@@ -24,13 +24,13 @@ namespace Persons.Ui.WebApi.Controllers
         {
             try
             {
-                AppResult<LoginViewModel> result = await _accountApp.Login(login);
+                AppResult<LoginViewModel> result = await _accountApp.Login(login).ConfigureAwait(true);
                 if (result.ValidationResult.IsValid)
                     return Ok(result);
                 else
                     return Unauthorized(result.ValidationResult.Errors.FirstOrDefault().ErrorMessage);
             }
-            catch (Exception ex)
+            catch (ApplicationException ex)
             {
                 return BadRequest(ex.Message);
             }

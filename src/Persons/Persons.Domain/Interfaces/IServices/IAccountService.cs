@@ -6,6 +6,6 @@ namespace Persons.Domain.Interfaces
 {
     public interface IAccountService
     {
-        Task<AppResult<User>> Authenticate(User user);
+        Task<AppResult<Account>> Authenticate(Account user);
     }
 }

@@ -11,9 +11,5 @@ namespace Persons.Domain.Validations.Rules
         {
         }
 
-        public async Task<bool> UserLoginAccountExist(User user)
-        {
-            return await _repository.SearchUserAsync(user);
-        }
     }
 }

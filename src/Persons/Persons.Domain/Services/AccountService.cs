@@ -9,7 +9,7 @@ namespace Persons.Domain.Services
     public class AccountService : IAccountService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IValidatorApp<User> _validator;
+        private readonly IValidatorApp<Account> _validator;
 
         public AccountService(IUnitOfWork unitOfWork)
         {
@@ -17,14 +17,14 @@ namespace Persons.Domain.Services
             _validator = _unitOfWork.userLoginValidate;
         }
 
-        public async Task<AppResult<User>> Authenticate(User user)
+        public async Task<AppResult<Account>> Authenticate(Account account)
         {
-            var result = await Task.Run(() => _validator.ValidateObject(user));
+            var result = await Task.Run(() => _validator.ValidateObject(account));
 
             if (!result.IsValid)
-                return AppResult<User>.Error(result);
+                return AppResult<Account>.Error(result);
 
-            return AppResult<User>.Succeed(user);
+            return AppResult<Account>.Succeed(account);
         }
     }
 }

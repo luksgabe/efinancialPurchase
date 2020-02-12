@@ -25,6 +25,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cadastros
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Index">Cadastro de Usuários</a>
+                                <a class="dropdown-item" href="#">Cadastro de Setor</a>
+                            </div>
+                        </li>
                     </ul>
                     <div class="mt-2 mt-md-0">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="SignOut">

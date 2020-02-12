@@ -12,8 +12,8 @@ namespace Persons.Application.Application
     public class AccountApplication : IAccountApplication
     {
         private readonly IMapper _mapper;
-        private readonly IAccountService _accountService;
         private readonly IHash _hash;
+        private readonly IAccountService _accountService;
 
         public AccountApplication(IAccountService accountService, IMapper mapper, IHash hash)
         {
@@ -24,11 +24,11 @@ namespace Persons.Application.Application
         public async Task<AppResult<LoginViewModel>> Login(LoginViewModel login)
         {
             AppResult<LoginViewModel> result;
-            var user = _mapper.Map<LoginViewModel, User>(login);
+            var account = _mapper.Map<LoginViewModel, Account>(login);
 
-            CreateHash(user);
+            CreateHash(account);
 
-            var retorno = await _accountService.Authenticate(user);
+            var retorno = await _accountService.Authenticate(account);
             if (!retorno.ValidationResult.IsValid)
                 result = AppResult<LoginViewModel>.Error(retorno.ValidationResult);
             else
@@ -37,10 +37,10 @@ namespace Persons.Application.Application
             return result;
         }
 
-        private void CreateHash(User user)
+        private void CreateHash(Account account)
         {
-            user.Login = _hash.Create(user.Login);
-            user.Password = _hash.Create(user.Password);
+            account.Login = _hash.Create(account.Login);
+            account.Password = _hash.Create(account.Password);
         }
     }
 }

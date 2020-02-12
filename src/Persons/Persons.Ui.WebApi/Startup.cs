@@ -32,17 +32,6 @@ namespace Persons.Ui.WebApi
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             RegisterServices(services);
-
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new Info
-            //    {
-            //        Title = "API de cadastros de usuários.",
-            //        Description = "Api permite a integração com outros módulos do sistema de compras.",
-            //        Version = "v1"
-            //    });
-            //});
-
             services.AddSwaggerDocument();
         }
 
@@ -66,9 +55,9 @@ namespace Persons.Ui.WebApi
 
             //app.UseAuthorization();
             app.UseOpenApi();
-            app.UseSwaggerUi3();
-            app.UseEndpoints(endpoints => endpoints.MapControllers());
+            app.UseSwaggerCustom();
 
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
 
         private static void RegisterServices(IServiceCollection services)

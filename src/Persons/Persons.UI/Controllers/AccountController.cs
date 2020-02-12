@@ -31,32 +31,32 @@ namespace Persons.Ui.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public async Task<IActionResult> Login()
+        public IActionResult Login()
         {
             //await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel login)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             try
             {
                 if (!ModelState.IsValid)
-                    return View(login);
+                    return View(model);
 
                 _urlRedirect = "api/Account/Login";
-                var command = await _webApi.PostAsync<AppResult<LoginViewModel>>(_urlRedirect, login);
+                var command = await _webApi.PostAsync<AppResult<LoginViewModel>>(_urlRedirect, model);
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("", ex.Message.SpliteHttpCode().Trim());
-                return View(login);
+                return View(model);
             }
         }
 
-        public async Task<IActionResult> SignOut()
+        public IActionResult SignOut()
         {
             return RedirectToAction("Login");
         }

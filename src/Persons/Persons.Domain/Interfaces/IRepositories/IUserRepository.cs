@@ -6,6 +6,6 @@ namespace Persons.Domain.Interfaces
 {
     public interface IUserRepository : IRepository<User>
     {
-        Task<bool> SearchUserAsync(User user);
+        //Task<bool> SearchUserAsync(User user);
     }
 }

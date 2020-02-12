@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persons.Infra.Data.Context;
 
 namespace Persons.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200205195319_05-02-20")]
+    partial class _050220
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,16 +56,6 @@ namespace Persons.Infra.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Accounts","Account");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            IdUser = 1L,
-                            Login = "vjQeBi/dPnPLFVDwZRJUHEE17h2i7Sjmwh188EcNgt7UuAugafd2c9OkojKw33mf0o/UopfzbeZALFQildtJUg==",
-                            Password = "z8uY8pIDZ/SjS6/dQjksAkqzNXqQ2qL+GP8+UV/bZfDCqLZLF9X2QkgMUFZIqwUhX1HLTitxHSU54u23Erz+vA==",
-                            Status = (short)1
-                        });
                 });
 
             modelBuilder.Entity("Persons.Domain.Entities.User", b =>
@@ -105,18 +97,6 @@ namespace Persons.Infra.Data.Migrations
                     b.HasIndex("Email");
 
                     b.ToTable("Users","User");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Cpf = "85100790059",
-                            Email = "85100790059",
-                            LastName = "Pereira da Silva",
-                            Name = "Lucas Gabriel",
-                            Roles = (short)3,
-                            Status = (short)1
-                        });
                 });
 
             modelBuilder.Entity("Persons.Domain.Entities.Account", b =>

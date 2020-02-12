@@ -8,6 +8,7 @@ using Persons.CrossCutting.Security.Hash;
 using Persons.CrossCutting.WebApiServices;
 using Persons.Domain.Interfaces;
 using Persons.Domain.Services;
+using Persons.Infra.Data.Context;
 using Persons.Infra.Data.UoW;
 using System;
 
@@ -24,16 +25,22 @@ namespace Persons.CrossCutting.IoC
             services.AddSingleton<IWebApiService, WebApiService>();
 
             services.AddScoped<IAccountApplication, AccountApplication>();
+            services.AddScoped<IUserApplication, UserApplication>();
 
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ApplicationDbContext>();
         }
 
         public static void UseSwaggerCustom(this IApplicationBuilder application)
         {
-            application.UseSwagger();
-            application.UseSwaggerUI(cfg => cfg.SwaggerEndpoint("/swagger/api/swagger.json", "API"));
+            application.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "Persons");
+            });
         }
 
         public static void AddAutoMapperSetup(this IServiceCollection services)
