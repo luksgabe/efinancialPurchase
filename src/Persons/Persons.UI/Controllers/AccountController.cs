@@ -51,7 +51,7 @@ namespace Persons.Ui.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", ex.Message.SpliteHttpCode().Trim());
+                ModelState.AddModelError("", ex.Message.SplitHttpCode().Trim());
                 return View(model);
             }
         }

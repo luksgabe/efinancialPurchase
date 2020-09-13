@@ -2,7 +2,7 @@
 {
     public static class StringExtension
     {
-        public static string SpliteHttpCode(this string message)
+        public static string SplitHttpCode(this string message)
         {
             if (message.Contains("Unauthorized"))
             {

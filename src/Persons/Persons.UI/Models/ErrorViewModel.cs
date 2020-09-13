@@ -13,7 +13,7 @@ namespace Persons.Ui.Models
 
         public static void ModelStateExtention(string errorSerialized)
         {
-            errorSerialized = errorSerialized.SpliteHttpCode();
+            errorSerialized = errorSerialized.SplitHttpCode();
             var result = JsonConvert.DeserializeObject<DataResult<string>>(errorSerialized);
 
         }
